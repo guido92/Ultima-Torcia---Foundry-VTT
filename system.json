@@ -1,7 +1,7 @@
 {
     "id": "ultima-torcia",
     "title": "L'Ultima Torcia",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "compatibility": {
         "minimum": "12",
         "verified": "13"
@@ -74,6 +74,6 @@
     ],
     "url": "https://github.com/guido92/Ultima-Torcia---Foundry-VTT",
     "manifest": "https://raw.githubusercontent.com/guido92/Ultima-Torcia---Foundry-VTT/main/system.json",
-    "download": "https://github.com/guido92/Ultima-Torcia---Foundry-VTT/raw/main/system.zip",
+    "download": "https://github.com/guido92/Ultima-Torcia---Foundry-VTT/releases/latest/download/system.zip",
     "license": "LICENSE"
 }
