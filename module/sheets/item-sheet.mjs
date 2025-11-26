@@ -1,4 +1,4 @@
-export class UltimaTorciaItemSheet extends ItemSheet {
+export class UltimaTorciaItemSheet extends foundry.appv1.sheets.ItemSheet {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {

@@ -11,14 +11,14 @@ Hooks.once("init", async function () {
   CONFIG.Item.documentClass = UltimaTorciaItem;
 
   // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("ultima-torcia", UltimaTorciaActorSheet, {
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.registerSheet("ultima-torcia", UltimaTorciaActorSheet, {
     makeDefault: true,
     label: "L'Ultima Torcia Character Sheet",
   });
 
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("ultima-torcia", UltimaTorciaItemSheet, {
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet("ultima-torcia", UltimaTorciaItemSheet, {
     makeDefault: true,
     label: "L'Ultima Torcia Item Sheet",
   });
@@ -37,5 +37,5 @@ async function preloadHandlebarsTemplates() {
     "systems/ultima-torcia/templates/actor/actor-character-sheet.hbs",
     "systems/ultima-torcia/templates/item/item-sheet.hbs",
   ];
-  return loadTemplates(templatePaths);
+  return foundry.applications.handlebars.loadTemplates(templatePaths);
 }

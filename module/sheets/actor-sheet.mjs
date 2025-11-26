@@ -1,4 +1,4 @@
-export class UltimaTorciaActorSheet extends ActorSheet {
+export class UltimaTorciaActorSheet extends foundry.appv1.sheets.ActorSheet {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
