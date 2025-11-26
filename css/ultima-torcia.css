@@ -1,69 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=MedievalSharp&display=swap');
+
+.ultima-torcia.sheet.actor {
+    min-width: 600px;
+    min-height: 700px;
+}
+
 .ultima-torcia .window-content {
-    border: none;
-    border-bottom: 2px solid #4b4a44;
+    background: url('../assets/parchment.jpg') repeat;
+    /* Fallback or actual texture */
+    background-color: #f4e4bc;
+    /* Fallback color */
+    color: #3b2d20;
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+}
+
+.ultima-torcia input[type="text"],
+.ultima-torcia input[type="number"] {
     background: transparent;
+    border: none;
+    border-bottom: 1px solid #8a1c1c;
+    border-radius: 0;
+    font-family: 'Crimson Text', serif;
+    color: #3b2d20;
 }
 
-.ultima-torcia .sheet-tabs {
-    flex: 0 0 32px;
-    line-height: 32px;
-    border-top: 2px solid #4b4a44;
-    border-bottom: 2px solid #4b4a44;
+.ultima-torcia input[type="text"]:focus,
+.ultima-torcia input[type="number"]:focus {
+    box-shadow: none;
+    border-bottom: 2px solid #ff6400;
+}
+
+.ultima-torcia h1,
+.ultima-torcia h2,
+.ultima-torcia h3,
+.ultima-torcia h4 {
+    font-family: 'MedievalSharp', cursive;
+    color: #2c1b10;
+    border-bottom: none;
+}
+
+.ultima-torcia .sheet-header {
+    border-bottom: 2px solid #8a1c1c;
     margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
-.ultima-torcia .sheet-tabs .item {
-    padding: 0px 10px;
-    border-right: 1px solid #c9c7b8;
-    font-weight: bold;
+.ultima-torcia .profile-img {
+    border: 2px solid #8a1c1c;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
-.ultima-torcia .sheet-tabs .item:last-child {
-    border-right: none;
-}
-
-.ultima-torcia .sheet-tabs .item.active {
-    text-shadow: 0 0 10px #ff6400;
-    border-bottom: 3px solid #ff6400;
-}
-
-.ultima-torcia .sheet-body {
-    overflow: hidden;
-}
-
-.ultima-torcia .sheet-body .tab {
-    height: 100%;
-    overflow-y: auto;
+.ultima-torcia .charname input {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 24px;
+    height: 40px;
+    border: none;
+    border-bottom: 2px solid #8a1c1c;
 }
 
 .ultima-torcia .resource-label {
+    font-family: 'MedievalSharp', cursive;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
+    color: #8a1c1c;
+    margin-bottom: 3px;
 }
 
-.ultima-torcia .attributes {
-    margin-top: 10px;
+.ultima-torcia .sheet-tabs {
+    border-top: 2px solid #8a1c1c;
+    border-bottom: 2px solid #8a1c1c;
+    font-family: 'MedievalSharp', cursive;
+    font-size: 16px;
 }
 
-.ultima-torcia .attribute {
-    margin-bottom: 5px;
-    background: rgba(0, 0, 0, 0.05);
-    padding: 5px;
-    border-radius: 5px;
+.ultima-torcia .sheet-tabs .item.active {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid #8a1c1c;
+    color: #8a1c1c;
 }
 
 .ultima-torcia .grid-3col {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-    margin-bottom: 5px;
+    gap: 10px;
 }
 
 .ultima-torcia .grid-4col {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
+    gap: 10px;
+}
+
+.ultima-torcia .grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
 .ultima-torcia .items-list {
@@ -73,29 +107,41 @@
 }
 
 .ultima-torcia .items-list .item-header {
+    background: rgba(138, 28, 28, 0.1);
+    border: 1px solid #8a1c1c;
+    font-family: 'MedievalSharp', cursive;
     font-weight: bold;
-    background: rgba(0, 0, 0, 0.1);
     padding: 5px;
-    border-bottom: 2px solid #4b4a44;
+    margin-bottom: 2px;
 }
 
 .ultima-torcia .items-list .item {
-    padding: 5px;
+    background: rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid #c9c7b8;
+    padding: 5px;
     align-items: center;
 }
 
-.ultima-torcia .items-list .item-image {
-    flex: 0 0 24px;
-    margin-right: 5px;
+.ultima-torcia .items-list .item:last-child {
+    border-bottom: none;
 }
 
-.ultima-torcia .items-list .item-name {
-    flex: 1;
-    margin: 0;
+.ultima-torcia .combat-btn {
+    background: #8a1c1c;
+    color: #f4e4bc;
+    border: 1px solid #2c1b10;
+    font-family: 'MedievalSharp', cursive;
+    cursor: pointer;
 }
 
-.ultima-torcia .items-list .item-controls {
-    flex: 0 0 50px;
-    text-align: right;
+.ultima-torcia .combat-btn:hover {
+    background: #a82222;
+    box-shadow: 0 0 5px #ff6400;
+}
+
+.ultima-torcia .editor {
+    border: 1px solid #c9c7b8;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px;
+    min-height: 200px;
 }
