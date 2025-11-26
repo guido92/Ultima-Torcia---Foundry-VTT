@@ -1,0 +1,10 @@
+# Foundry VTT
+dist/
+node_modules/
+.idea/
+.vscode/
+*.log
+*.zip
+
+# System specific
+lang/it.json.bak

@@ -1,0 +1,50 @@
+{
+    "id": "ultima-torcia",
+    "title": "L'Ultima Torcia",
+    "version": "1.0.0",
+    "compatibility": {
+        "minimum": "12",
+        "verified": "13"
+    },
+    "authors": [
+        {
+            "name": "Antigravity",
+            "flags": {}
+        }
+    ],
+    "esmodules": [
+        "module/ultima-torcia.mjs"
+    ],
+    "styles": [
+        "css/ultima-torcia.css"
+    ],
+    "documentTypes": {
+        "Actor": {
+            "character": {},
+            "monster": {},
+            "npc": {}
+        },
+        "Item": {
+            "weapon": {},
+            "armor": {},
+            "consumable": {},
+            "skill": {},
+            "spell": {},
+            "feature": {}
+        }
+    },
+    "packFolders": [],
+    "packs": [],
+    "languages": [
+        {
+            "lang": "it",
+            "name": "Italiano",
+            "path": "lang/it.json"
+        }
+    ],
+    "socket": false,
+    "url": "https://github.com/USERNAME/ultima-torcia",
+    "manifest": "https://github.com/USERNAME/ultima-torcia/releases/latest/download/system.json",
+    "download": "https://github.com/USERNAME/ultima-torcia/releases/latest/download/system.zip",
+    "license": "LICENSE"
+}

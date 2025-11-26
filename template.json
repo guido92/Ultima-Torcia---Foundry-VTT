@@ -1,0 +1,157 @@
+{
+    "Actor": {
+        "types": [
+            "character",
+            "monster",
+            "npc"
+        ],
+        "character": {
+            "attributes": {
+                "agilita": {
+                    "value": 1,
+                    "label": "Agilità"
+                },
+                "coraggio": {
+                    "value": 1,
+                    "label": "Coraggio"
+                },
+                "forza": {
+                    "value": 1,
+                    "label": "Forza"
+                },
+                "intelligenza": {
+                    "value": 1,
+                    "label": "Intelligenza"
+                },
+                "magia": {
+                    "value": 1,
+                    "label": "Magia"
+                },
+                "manualita": {
+                    "value": 1,
+                    "label": "Manualità"
+                },
+                "percezione": {
+                    "value": 1,
+                    "label": "Percezione"
+                },
+                "socialita": {
+                    "value": 1,
+                    "label": "Socialità"
+                }
+            },
+            "resources": {
+                "hp": {
+                    "value": 10,
+                    "max": 10,
+                    "label": "Punti Ferita"
+                },
+                "mana": {
+                    "value": 0,
+                    "max": 10,
+                    "label": "Punti Magia"
+                },
+                "torches": {
+                    "value": 0,
+                    "label": "Torce"
+                },
+                "rations": {
+                    "value": 0,
+                    "label": "Razioni"
+                }
+            },
+            "details": {
+                "race": {
+                    "value": "",
+                    "label": "Razza"
+                },
+                "role": {
+                    "value": "",
+                    "label": "Ruolo"
+                },
+                "xp": {
+                    "value": 0,
+                    "label": "Punti Avventura"
+                },
+                "notes": {
+                    "value": "",
+                    "label": "Note"
+                }
+            }
+        },
+        "monster": {
+            "attributes": {
+                "agilita": {
+                    "value": 1
+                },
+                "coraggio": {
+                    "value": 1
+                },
+                "forza": {
+                    "value": 1
+                },
+                "intelligenza": {
+                    "value": 1
+                },
+                "magia": {
+                    "value": 1
+                },
+                "manualita": {
+                    "value": 1
+                },
+                "percezione": {
+                    "value": 1
+                },
+                "socialita": {
+                    "value": 1
+                }
+            },
+            "resources": {
+                "hp": {
+                    "value": 10,
+                    "max": 10
+                }
+            }
+        },
+        "npc": {}
+    },
+    "Item": {
+        "types": [
+            "weapon",
+            "armor",
+            "consumable",
+            "skill",
+            "spell",
+            "feature"
+        ],
+        "weapon": {
+            "damage": {
+                "value": "1d6"
+            },
+            "type": {
+                "value": "melee"
+            }
+        },
+        "armor": {
+            "value": {
+                "value": 1
+            }
+        },
+        "consumable": {
+            "quantity": {
+                "value": 1
+            }
+        },
+        "skill": {
+            "level": {
+                "value": 1
+            }
+        },
+        "spell": {
+            "cost": {
+                "value": 1
+            }
+        },
+        "feature": {}
+    }
+}
