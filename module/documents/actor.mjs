@@ -34,9 +34,15 @@ export class UltimaTorciaActor extends Actor {
         // Make modifications to data here. For example:
         const system = actorData.system;
 
-        // Loop through attributes, and add their modifiers to our sheet output.
-        // In Ultima Torcia, attributes are d10 based.
-        // We might want to calculate something here later.
+        // Calculate Armor Class (CA)
+        let armorValue = 0;
+        for (let item of this.items) {
+            if (item.type === 'armor') {
+                armorValue += item.system.value.value || 0;
+            }
+        }
+        // We can store this in a temporary property
+        system.attributes.armor = { value: armorValue, label: "Armatura" };
     }
 
     /** @override */
@@ -63,8 +69,6 @@ export class UltimaTorciaActor extends Actor {
                 data[k] = foundry.utils.deepClone(v);
             }
         }
-
-        // Add level for easier access, or other derived data
     }
 
     /**

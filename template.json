@@ -9,35 +9,43 @@
             "attributes": {
                 "agilita": {
                     "value": 1,
-                    "label": "Agilità"
+                    "label": "Agilità",
+                    "pregio": false
                 },
                 "coraggio": {
                     "value": 1,
-                    "label": "Coraggio"
+                    "label": "Coraggio",
+                    "pregio": false
                 },
                 "forza": {
                     "value": 1,
-                    "label": "Forza"
+                    "label": "Forza",
+                    "pregio": false
                 },
                 "intelligenza": {
                     "value": 1,
-                    "label": "Intelligenza"
+                    "label": "Intelligenza",
+                    "pregio": false
                 },
                 "magia": {
                     "value": 1,
-                    "label": "Magia"
+                    "label": "Magia",
+                    "pregio": false
                 },
                 "manualita": {
                     "value": 1,
-                    "label": "Manualità"
+                    "label": "Manualità",
+                    "pregio": false
                 },
                 "percezione": {
                     "value": 1,
-                    "label": "Percezione"
+                    "label": "Percezione",
+                    "pregio": false
                 },
                 "socialita": {
                     "value": 1,
-                    "label": "Socialità"
+                    "label": "Socialità",
+                    "pregio": false
                 }
             },
             "resources": {
@@ -58,6 +66,28 @@
                 "rations": {
                     "value": 0,
                     "label": "Razioni"
+                },
+                "fiorini": {
+                    "value": 0,
+                    "label": "Fiorini"
+                }
+            },
+            "conditions": {
+                "fame": {
+                    "value": false,
+                    "label": "Fame"
+                },
+                "sete": {
+                    "value": false,
+                    "label": "Sete"
+                },
+                "freddo": {
+                    "value": false,
+                    "label": "Freddo"
+                },
+                "paura": {
+                    "value": false,
+                    "label": "Paura"
                 }
             },
             "details": {
@@ -145,6 +175,9 @@
         "skill": {
             "level": {
                 "value": 1
+            },
+            "pregio": {
+                "value": false
             }
         },
         "spell": {
@@ -152,6 +185,13 @@
                 "value": 1
             }
         },
-        "feature": {}
+        "feature": {
+            "description": {
+                "value": ""
+            },
+            "subtype": {
+                "value": "feature"
+            }
+        }
     }
 }

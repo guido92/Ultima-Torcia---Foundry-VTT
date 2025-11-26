@@ -51,6 +51,9 @@ export class UltimaTorciaActorSheet extends foundry.appv1.sheets.ActorSheet {
         // Rollable abilities.
         html.find(".rollable").click(this._onRoll.bind(this));
 
+        // Combat Actions
+        html.find(".combat-btn").click(this._onCombatRoll.bind(this));
+
         // Render the item sheet for viewing/editing prior to the editable check.
         html.find(".item-edit").click((ev) => {
             const li = $(ev.currentTarget).parents(".item");
@@ -113,55 +116,112 @@ export class UltimaTorciaActorSheet extends foundry.appv1.sheets.ActorSheet {
         if (dataset.roll) {
             let label = dataset.label ? `Rolling ${dataset.label}` : "";
 
-            // Create a dialog to ask for modifiers
-            new Dialog({
-                title: "Roll Attribute",
-                content: `
-          <form>
-            <div class="form-group">
-              <label>Modifier</label>
-              <input type="text" name="modifier" value="0"/>
-            </div>
-            <div class="form-group">
-              <label>Roll Mode</label>
-              <select name="mode">
-                <option value="normal">Normal (1d10)</option>
-                <option value="advantage">Advantage (2d10kh1)</option>
-                <option value="disadvantage">Disadvantage (2d10kl1)</option>
-              </select>
-            </div>
-          </form>
-        `,
-                buttons: {
-                    roll: {
-                        label: "Roll",
-                        callback: (html) => {
-                            const modifier = parseInt(html.find('[name="modifier"]').val()) || 0;
-                            const mode = html.find('[name="mode"]').val();
-                            let formula = dataset.roll;
+            // Check for Pregio in the attribute
+            // We need to find which attribute this is.
+            // The dataset.roll is like "d10+@attributes.agilita.value"
+            // We can parse the key from the label or dataset.
+            // A better way is to pass the attribute key in the dataset.
+            // But for now, let's look at the formula.
+            let pregio = false;
+            // This is a bit hacky, but we can check if the label matches an attribute label
+            for (let [key, attr] of Object.entries(this.actor.system.attributes)) {
+                if (attr.label === dataset.label) {
+                    pregio = attr.pregio;
+                    break;
+                }
+            }
 
-                            if (mode === "advantage") {
-                                formula = formula.replace("d10", "2d10kh1");
-                            } else if (mode === "disadvantage") {
-                                formula = formula.replace("d10", "2d10kl1");
-                            }
+            this._createRollDialog(dataset.roll, label, pregio);
+        }
+    }
 
-                            if (modifier !== 0) {
-                                formula += ` + ${modifier}`;
-                            }
+    /**
+     * Handle Combat Rolls (Attack, Dodge, Parry)
+     * @param {Event} event 
+     */
+    _onCombatRoll(event) {
+        event.preventDefault();
+        const action = event.currentTarget.dataset.action;
+        let formula = "1d10";
+        let label = "";
+        let attributeKey = "";
 
-                            let roll = new Roll(formula, this.actor.getRollData());
-                            roll.toMessage({
-                                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-                                flavor: label,
-                                rollMode: game.settings.get("core", "rollMode"),
-                            });
-                        },
+        if (action === "attack-melee") {
+            attributeKey = "forza";
+            label = "Attacco (Mischia)";
+        } else if (action === "attack-ranged") {
+            attributeKey = "percezione";
+            label = "Attacco (Distanza)";
+        } else if (action === "dodge") {
+            attributeKey = "agilita";
+            label = "Schivata / Parata";
+        }
+
+        if (attributeKey) {
+            const attribute = this.actor.system.attributes[attributeKey];
+            formula += ` + ${attribute.value}`;
+            const pregio = attribute.pregio;
+            this._createRollDialog(formula, label, pregio);
+        }
+    }
+
+    /**
+     * Helper to create the roll dialog
+     */
+    _createRollDialog(formula, label, pregio) {
+        new Dialog({
+            title: label,
+            content: `
+      <form>
+        <div class="form-group">
+          <label>Modificatore</label>
+          <input type="text" name="modifier" value="0"/>
+        </div>
+        <div class="form-group">
+          <label>Modalità</label>
+          <select name="mode">
+            <option value="normal">Normale (1d10)</option>
+            <option value="advantage">Vantaggio (2d10kh1)</option>
+            <option value="disadvantage">Svantaggio (2d10kl1)</option>
+          </select>
+        </div>
+        ${pregio ? '<p class="notes">Pregio attivo: Ritira gli 1.</p>' : ''}
+      </form>
+    `,
+            buttons: {
+                roll: {
+                    label: "Tira",
+                    callback: (html) => {
+                        const modifier = parseInt(html.find('[name="modifier"]').val()) || 0;
+                        const mode = html.find('[name="mode"]').val();
+
+                        // Apply Pregio (Reroll 1s)
+                        let dice = "d10";
+                        if (pregio) dice += "r1";
+
+                        if (mode === "advantage") {
+                            formula = formula.replace("d10", `2${dice}kh1`);
+                        } else if (mode === "disadvantage") {
+                            formula = formula.replace("d10", `2${dice}kl1`);
+                        } else {
+                            formula = formula.replace("d10", `1${dice}`);
+                        }
+
+                        if (modifier !== 0) {
+                            formula += ` + ${modifier}`;
+                        }
+
+                        let roll = new Roll(formula, this.actor.getRollData());
+                        roll.toMessage({
+                            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                            flavor: label,
+                            rollMode: game.settings.get("core", "rollMode"),
+                        });
                     },
                 },
-                default: "roll",
-            }).render(true);
-        }
+            },
+            default: "roll",
+        }).render(true);
     }
 
     /**

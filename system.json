@@ -34,7 +34,6 @@
         }
     },
     "packFolders": [],
-    "packs": [],
     "languages": [
         {
             "lang": "it",
@@ -43,6 +42,36 @@
         }
     ],
     "socket": false,
+    "packs": [
+        {
+            "name": "races",
+            "label": "Razze",
+            "path": "packs/races.db",
+            "type": "Item",
+            "system": "ultima-torcia"
+        },
+        {
+            "name": "roles",
+            "label": "Ruoli",
+            "path": "packs/roles.db",
+            "type": "Item",
+            "system": "ultima-torcia"
+        },
+        {
+            "name": "abilities",
+            "label": "Abilità",
+            "path": "packs/abilities.db",
+            "type": "Item",
+            "system": "ultima-torcia"
+        },
+        {
+            "name": "gear",
+            "label": "Equipaggiamento",
+            "path": "packs/gear.db",
+            "type": "Item",
+            "system": "ultima-torcia"
+        }
+    ],
     "url": "https://github.com/guido92/Ultima-Torcia---Foundry-VTT",
     "manifest": "https://raw.githubusercontent.com/guido92/Ultima-Torcia---Foundry-VTT/main/system.json",
     "download": "https://github.com/guido92/Ultima-Torcia---Foundry-VTT/raw/main/system.zip",
