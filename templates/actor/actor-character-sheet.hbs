@@ -66,42 +66,147 @@
     </header>
 
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="attributes">Attributi</a>
-        <a class="item" data-tab="combat">Combattimento</a>
-        <a class="item" data-tab="items">Equipaggiamento</a>
-        <a class="item" data-tab="description">Descrizione & Note</a>
-    </nav>
-
-    <section class="sheet-body">
-        <div class="tab attributes" data-group="primary" data-tab="attributes">
-            <div class="grid grid-2col">
-                {{#each system.attributes as |attribute key|}}
-                <div class="attribute flexrow flex-group-center">
-                    <label for="system.attributes.{{key}}.value" class="resource-label rollable"
-                        data-roll="d10+@attributes.{{key}}.value"
-                        data-label="{{attribute.label}}">{{attribute.label}}</label>
-                    <input type="text" name="system.attributes.{{key}}.value" value="{{attribute.value}}"
-                        data-dtype="Number" />
-                    <label class="checkbox-label">
-                        Pregio
-                        <input type="checkbox" name="system.attributes.{{key}}.pregio" {{checked attribute.pregio}} />
-                    </label>
+        <form class="{{cssClass}}" autocomplete="off">
+            <header class="sheet-header">
+                <div class="header-fields">
+                    <div class="flexrow flex-center">
+                        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100"
+                            width="100" />
+                        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Nome" />
+                        </h1>
+                    </div>
+                    <div class="resources grid grid-3col">
+                        <label class="resource-label">Razza</label>
+                        <input type="text" name="system.details.race.value" value="{{system.details.race.value}}"
+                            placeholder="Razza" />
+                    </div>
+                    <div class="resource flex-group-center">
+                        <label class="resource-label">Ruolo</label>
+                        <input type="text" name="system.details.role.value" value="{{system.details.role.value}}"
+                            placeholder="Ruolo" />
+                    </div>
+                    <div class="resource flex-group-center">
+                        <label class="resource-label">Punti Avventura</label>
+                        <input type="text" name="system.details.xp.value" value="{{system.details.xp.value}}"
+                            data-dtype="Number" />
+                    </div>
                 </div>
-                {{/each}}
-            </div>
-        </div>
 
-        <div class="tab combat" data-group="primary" data-tab="combat">
-            <div class="combat-actions grid grid-3col">
-                <button class="rollable combat-btn" data-action="attack-melee">Attacco (Mischia)</button>
-                <button class="rollable combat-btn" data-action="attack-ranged">Attacco (Distanza)</button>
-                <button class="rollable combat-btn" data-action="dodge">Schivata / Parata</button>
-            </div>
+                <div class="resources grid grid-4col">
+                    <div class="resource flex-group-center">
+                        <label for="system.resources.hp.value" class="resource-label">Punti Ferita</label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input type="text" name="system.resources.hp.value" value="{{system.resources.hp.value}}"
+                                data-dtype="Number" />
+                            <span> / </span>
+                            <input type="text" name="system.resources.hp.max" value="{{system.resources.hp.max}}"
+                                data-dtype="Number" />
+                        </div>
+                    </div>
 
-            <div class="armor-section">
-                owner=owner
-                editable=editable
-                }}
-            </div>
-    </section>
-</form>
+                    <div class="resource flex-group-center">
+                        <label for="system.resources.mana.value" class="resource-label">Punti Magia</label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input type="text" name="system.resources.mana.value"
+                                value="{{system.resources.mana.value}}" data-dtype="Number" />
+                            <span> / </span>
+                            <input type="text" name="system.resources.mana.max" value="{{system.resources.mana.max}}"
+                                data-dtype="Number" />
+                        </div>
+                    </div>
+
+                    <div class="resource flex-group-center">
+                        <label for="system.resources.torches.value" class="resource-label">Torce</label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input type="text" name="system.resources.torches.value"
+                                value="{{system.resources.torches.value}}" data-dtype="Number" />
+                        </div>
+                    </div>
+
+                    <div class="resource flex-group-center">
+                        <label for="system.resources.rations.value" class="resource-label">Razioni</label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input type="text" name="system.resources.rations.value"
+                                value="{{system.resources.rations.value}}" data-dtype="Number" />
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </header>
+
+            <nav class="sheet-tabs tabs" data-group="primary">
+                <a class="item" data-tab="attributes">Attributi</a>
+                <a class="item" data-tab="combat">Combattimento</a>
+                <a class="item" data-tab="items">Equipaggiamento</a>
+                <a class="item" data-tab="description">Descrizione & Note</a>
+            </nav>
+
+            <section class="sheet-body">
+                <div class="tab attributes" data-group="primary" data-tab="attributes">
+                    <div class="grid grid-2col">
+                        {{#each system.attributes as |attribute key|}}
+                        <div class="attribute flexrow flex-group-center">
+                            <label for="system.attributes.{{key}}.value" class="resource-label rollable"
+                                data-roll="d10+@attributes.{{key}}.value"
+                                data-label="{{attribute.label}}">{{attribute.label}}</label>
+                            <input type="text" name="system.attributes.{{key}}.value" value="{{attribute.value}}"
+                                data-dtype="Number" />
+                            <label class="checkbox-label">
+                                Pregio
+                                <input type="checkbox" name="system.attributes.{{key}}.pregio" {{checked
+                                    attribute.pregio}} />
+                            </label>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <div class="tab combat" data-group="primary" data-tab="combat">
+                    <div class="combat-actions grid grid-3col">
+                        <button class="rollable combat-btn" data-action="attack-melee">Attacco (Mischia)</button>
+                        <button class="rollable combat-btn" data-action="attack-ranged">Attacco (Distanza)</button>
+                        <button class="rollable combat-btn" data-action="dodge">Schivata / Parata</button>
+                    </div>
+
+                    <div class="armor-section">
+                        <h3>Armatura ed Equipaggiamento</h3>
+                        <div class="grid grid-2col">
+                            <div class="resource flex-group-center">
+                                <label>Armatura (Valore)</label>
+                                <input type="text" name="system.attributes.armor.value"
+                                    value="{{system.attributes.armor.value}}" data-dtype="Number" placeholder="0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab items" data-group="primary" data-tab="items">
+                    <ol class="items-list">
+                        <li class="item flexrow item-header">
+                            <div class="item-image"></div>
+                            <div class="item-name">Nome</div>
+                            <div class="item-controls">
+                                <a class="item-control item-create" title="Create item" data-type="item"><i
+                                        class="fas fa-plus"></i> Aggiungi</a>
+                            </div>
+                        </li>
+                        {{#each items as |item id|}}
+                        <li class="item flexrow" data-item-id="{{item._id}}">
+                            <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24"
+                                    height="24" /></div>
+                            <h4 class="item-name">{{item.name}}</h4>
+                            <div class="item-controls">
+                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ol>
+                </div>
+
+                <div class="tab description" data-group="primary" data-tab="description">
+                    {{editor system.details.notes.value target="system.details.notes.value" button=true owner=owner
+                    editable=editable}}
+                </div>
+            </section>
+        </form>
