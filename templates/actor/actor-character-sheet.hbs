@@ -87,25 +87,9 @@
         </div>
 
         <div class="armor-section">
-            <h3>Armatura</h3>
-            <div class="grid grid-2col">
-                <div class="resource flex-group-center">
-                    <label>Armatura Equipaggiata</label>
-                    <!-- Placeholder for logic to show equipped armor -->
-                </div>
-                </li>
-                {{/each}}
-                </ol>
-            </div>
-
-            <div class="tab description" data-group="primary" data-tab="description">
-                {{editor
-                system.details.notes.value
-                target="system.details.notes.value"
-                button=true
-                owner=owner
-                editable=editable
-                }}
-            </div>
+            owner=owner
+            editable=editable
+            }}
+        </div>
 </section>
 </form>
