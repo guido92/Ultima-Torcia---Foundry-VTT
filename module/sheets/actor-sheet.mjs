@@ -38,7 +38,36 @@ export class UltimaTorciaActorSheet extends foundry.appv1.sheets.ActorSheet {
      * @param {Object} context The context object to use for rendering.
      */
     _prepareCharacterData(context) {
-        // Handle item sorting here if needed
+        // Initialize containers.
+        const raceFeatures = [];
+        const roleFeatures = [];
+        const equipment = [];
+        const otherFeatures = [];
+
+        // Iterate through items, allocating to containers.
+        for (let i of context.items) {
+            i.img = i.img || Item.DEFAULT_ICON;
+            // Append to gear.
+            if (["weapon", "armor", "consumable", "gear"].includes(i.type)) {
+                equipment.push(i);
+            }
+            // Append to features.
+            else if (i.type === "feature") {
+                if (i.system.subtype?.value === "race") {
+                    raceFeatures.push(i);
+                } else if (i.system.subtype?.value === "role") {
+                    roleFeatures.push(i);
+                } else {
+                    otherFeatures.push(i);
+                }
+            }
+        }
+
+        // Assign and return
+        context.raceFeatures = raceFeatures;
+        context.roleFeatures = roleFeatures;
+        context.equipment = equipment;
+        context.otherFeatures = otherFeatures;
     }
 
     /** @override */
