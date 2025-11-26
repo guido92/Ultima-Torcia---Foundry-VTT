@@ -8,7 +8,7 @@
     },
     "authors": [
         {
-            "name": "Antigravity",
+            "name": "guido92",
             "flags": {}
         }
     ],
@@ -43,8 +43,8 @@
         }
     ],
     "socket": false,
-    "url": "https://github.com/USERNAME/ultima-torcia",
-    "manifest": "https://github.com/USERNAME/ultima-torcia/releases/latest/download/system.json",
-    "download": "https://github.com/USERNAME/ultima-torcia/releases/latest/download/system.zip",
+    "url": "https://github.com/guido92/Ultima-Torcia---Foundry-VTT",
+    "manifest": "https://github.com/guido92/Ultima-Torcia---Foundry-VTT/releases/latest/download/system.json",
+    "download": "https://github.com/guido92/Ultima-Torcia---Foundry-VTT/releases/latest/download/system.zip",
     "license": "LICENSE"
 }
